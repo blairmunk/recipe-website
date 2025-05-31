@@ -13,7 +13,13 @@
             </div>
             
             <div class="mb-4">
-                <img src="{{ object.image.url }}" alt="{{ object.title }}" class="img-fluid">
+                {% if object.image %}
+                    <img src="{{ object.image.url }}" alt="{{ object.title }}" class="img-fluid">
+                {% else %}
+                    <div class="bg-light p-5 text-center">
+                        <p class="text-muted">No image available</p>
+                    </div>
+                {% endif %}
             </div>
             
             <div class="mb-4">
