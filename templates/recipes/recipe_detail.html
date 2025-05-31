@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+    <article class="media content-section">
+        <div class="media-body">
+            <h1>{{ object.title }}</h1>
+            <div class="d-flex justify-content-between mb-2">
+                <div>
+                    <small class="text-muted">By {{ object.author }} on {{ object.created_at|date:"F d, Y" }}</small>
+                </div>
+                <div>
+                    <small class="text-muted">Preparation time: {{ object.preparation_time }} minutes</small>
+                </div>
+            </div>
+            
+            <div class="mb-4">
+                <img src="{{ object.image.url }}" alt="{{ object.title }}" class="img-fluid">
+            </div>
+            
+            <div class="mb-4">
+                <h4>Description</h4>
+                <p>{{ object.description }}</p>
+            </div>
+            
+            <div class="mb-4">
+                <h4>Preparation Steps</h4>
+                {{ object.preparation_steps|linebreaks }}
+            </div>
+            
+            <div class="mb-4">
+                <h4>Categories</h4>
+                <div>
+                    {% for category in object.categories.all %}
+                        <a href="{% url 'category-recipes' category.slug %}" class="badge bg-secondary me-1">{{ category.name }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            {% if object.author == user %}
+                <div>
+                    <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'recipe-update' object.slug %}">Update</a>
+                    <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'recipe-delete' object.slug %}">Delete</a>
+                </div>
+            {% endif %}
+        </div>
+    </article>
+{% endblock content %}

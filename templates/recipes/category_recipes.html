@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1 class="mb-4">{{ category.name }} Recipes</h1>
+    <p>{{ category.description }}</p>
+    
+    <div class="row">
+        {% for recipe in recipes %}
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <img src="{{ recipe.image.url }}" class="card-img-top" alt="{{ recipe.title }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ recipe.title }}</h5>
+                        <p class="card-text">{{ recipe.description|truncatewords:30 }}</p>
+                        <div class="d-flex justify-content-between">
+                            <small class="text-muted">By {{ recipe.author }}</small>
+                            <small class="text-muted">{{ recipe.preparation_time }} mins</small>
+                        </div>
+                        <a href="{% url 'recipe-detail' recipe.slug %}" class="btn btn-primary mt-2">Read More</a>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <div class="col-12">
+                <p>No recipes found in this category.</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock content %}
