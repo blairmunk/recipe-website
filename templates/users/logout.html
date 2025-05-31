@@ -2,10 +2,19 @@
 {% block content %}
     <div class="content-section">
         <h2>You have been logged out</h2>
+        <p>You will be redirected to the homepage in a few seconds...</p>
         <div class="border-top pt-3">
             <small class="text-muted">
-                <a href="{% url 'login' %}">Log In Again</a>
+                <a href="{% url 'login' %}">Log In Again</a> | 
+                <a href="{% url 'home' %}">Go to Homepage</a>
             </small>
         </div>
     </div>
+    
+    <script>
+        // Redirect to homepage after 3 seconds
+        setTimeout(function() {
+            window.location.href = "{% url 'home' %}";
+        }, 3000);
+    </script>
 {% endblock content %}
