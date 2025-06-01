@@ -22,7 +22,7 @@ class Recipe(models.Model):
     description = models.TextField()
     preparation_steps = models.TextField()
     preparation_time = models.IntegerField(help_text="Preparation time in minutes")
-    image = models.ImageField(upload_to='recipe_images')
+    image = models.ImageField(upload_to='recipe_images', blank=True, null=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     categories = models.ManyToManyField(Category, through='RecipeCategory')
     created_at = models.DateTimeField(auto_now_add=True)
