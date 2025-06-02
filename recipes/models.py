@@ -2,6 +2,31 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
 from django.utils.text import slugify
+import re
+from transliterate import translit
+
+def custom_slugify(text):
+    """
+    Custom slugify function that handles Cyrillic and other non-ASCII characters
+    by transliterating them to Latin characters.
+    """
+    # First try to transliterate (will handle Cyrillic and some other scripts)
+    try:
+        text = translit(text, 'en', reversed=True)
+    except:
+        # If transliteration fails, continue with the original text
+        pass
+    
+    # Apply standard slugify
+    slug = slugify(text)
+    
+    # If slug is empty (e.g., only had non-ASCII chars that got removed),
+    # generate a timestamp-based slug
+    if not slug:
+        from time import time
+        slug = f"recipe-{int(time())}"
+        
+    return slug
 
 class Category(models.Model):
     name = models.CharField(max_length=100, unique=True)
@@ -38,12 +63,12 @@ class Recipe(models.Model):
     def save(self, *args, **kwargs):
         # Generate a slug if one doesn't exist
         if not self.slug:
-            self.slug = slugify(self.title)
+            self.slug = custom_slugify(self.title)
             
             # Ensure uniqueness
             original_slug = self.slug
             count = 1
-            while Recipe.objects.filter(slug=self.slug).exists():
+            while Recipe.objects.filter(slug=self.slug).exclude(id=self.id).exists():
                 self.slug = f"{original_slug}-{count}"
                 count += 1
                 
