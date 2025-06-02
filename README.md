@@ -63,7 +63,7 @@ For production deployment on Ubuntu, follow these steps:
 
 `bash sudo -u postgres psql CREATE DATABASE recipe_db; CREATE USER recipe_user WITH PASSWORD 'your_secure_password'; GRANT ALL PRIVILEGES ON DATABASE recipe_db TO recipe_user; \c recipe_db GRANT ALL ON SCHEMA public TO recipe_user; \q`
 
-4. Clone and configure the project (follow detailed steps in deployment guide)
+4. Clone and configure the project
 
 5. Set up Gunicorn with Supervisor and configure Nginx
 
