@@ -73,7 +73,35 @@ For production deployment on Ubuntu, follow these steps:
 
 ## Project Structure
 
-recipe_website/ ├── manage.py ├── recipe_project/ │ ├── init.py │ ├── settings.py │ ├── urls.py │ └── wsgi.py ├── recipes/ │ ├── admin.py │ ├── forms.py │ ├── models.py │ ├── urls.py │ └── views.py ├── users/ │ ├── admin.py │ ├── forms.py │ ├── models.py │ ├── signals.py │ └── views.py ├── static/ │ ├── css/ │ └── js/ ├── media/ │ └── recipe_images/ ├── templates/ │ ├── base.html │ ├── recipes/ │ └── users/ └── requirements.txt
+recipe_website/
+├── manage.py
+├── recipe_project/
+│   ├── __init__.py
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+├── recipes/
+│   ├── admin.py
+│   ├── forms.py
+│   ├── models.py
+│   ├── urls.py
+│   └── views.py
+├── users/
+│   ├── admin.py
+│   ├── forms.py
+│   ├── models.py
+│   ├── signals.py
+│   └── views.py
+├── static/
+│   ├── css/
+│   └── js/
+├── media/
+│   └── recipe_images/
+├── templates/
+│   ├── base.html
+│   ├── recipes/
+│   └── users/
+└── requirements.txt
 
 ## Usage
 
