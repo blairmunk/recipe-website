@@ -2,7 +2,7 @@
 
 A feature-rich recipe management web application built with Django. This platform allows users to create, share, and discover cooking recipes with a clean, responsive interface.
 
-![Django Recipe Website](https://recipes.keepsolve.ru/static/img/logo.png)
+![Django Recipe Website](recipes_logo.png)
 
 ## Features
 
