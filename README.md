@@ -72,7 +72,7 @@ For production deployment on Ubuntu, follow these steps:
 `bash apt install -y certbot python3-certbot-nginx certbot --nginx -d yourdomain.com`
 
 ## Project Structure
-
+``` bash
 recipe_website/
 ├── manage.py
 ├── recipe_project/
@@ -102,6 +102,7 @@ recipe_website/
 │   ├── recipes/
 │   └── users/
 └── requirements.txt
+```
 
 ## Usage
 
