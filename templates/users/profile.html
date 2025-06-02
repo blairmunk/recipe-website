@@ -23,9 +23,21 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ recipe.title }}</h5>
                             <p class="card-text">{{ recipe.description|truncatewords:20 }}</p>
-                            <a href="{% url 'recipe-detail' recipe.slug %}" class="btn btn-sm btn-primary">View</a>
-                            <a href="{% url 'recipe-update' recipe.slug %}" class="btn btn-sm btn-secondary">Edit</a>
-                            <a href="{% url 'recipe-delete' recipe.slug %}" class="btn btn-sm btn-danger">Delete</a>
+                            {% if recipe.slug %}
+                                <a href="{% url 'recipe-detail' recipe.slug %}" class="btn btn-sm btn-primary">View</a>
+                            {% else %}
+                                <a href="#" class="btn btn-primary mt-2 disabled">No Details Available</a>
+                            {% endif %}
+                            {% if recipe.slug %}
+                                <a href="{% url 'recipe-update' recipe.slug %}" class="btn btn-sm btn-secondary">Edit</a>
+                            {% else %}
+                                <a href="#" class="btn btn-secondary mt-2 disabled">No Details Available</a>
+                            {% endif %}
+                            {% if recipe.slug %}
+                                <a href="{% url 'recipe-delete' recipe.slug %}" class="btn btn-sm btn-danger">Delete</a>
+                            {% else %}
+                                <a href="#" class="btn btn-danger mt-2 disabled">No Details Available</a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
