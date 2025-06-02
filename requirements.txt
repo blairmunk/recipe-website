@@ -1,0 +1,38 @@
+# Core Django components
+Django==5.2.1
+python-dotenv==1.0.0
+
+# Database
+psycopg2-binary==2.9.9
+
+# Web server
+gunicorn==21.2.0
+
+# Static files handling
+whitenoise==6.5.0
+
+# Form handling and UI
+django-crispy-forms==2.0
+crispy-bootstrap4==2022.1
+
+# Image processing
+Pillow==10.0.1
+
+# Text handling and transliteration (for Cyrillic slugs)
+transliterate==1.10.2
+
+# Security
+django-secure==1.0.2
+
+# Optional: For development
+# pytest==7.4.0
+# pytest-django==4.5.2
+# coverage==7.3.1
+
+# Optional: For production monitoring
+# sentry-sdk==1.28.1
+
+# Optional: For API implementation
+# djangorestframework==3.14.0
+# markdown==3.4.4
+# django-filter==23.2
